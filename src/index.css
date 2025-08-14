@@ -1,0 +1,297 @@
+/* ==========================================================================
+   1. DIRECTIVAS TAILWIND (ESENCIALES)
+   ========================================================================== */
+
+@import "tailwindcss";
+/* ==========================================================================
+   2. VARIABLES DE TEMA (BASADAS EN TU CÓDIGO ORIGINAL)
+   ========================================================================== */
+
+/* Light Theme (Default) */
+:root {
+  /* Fondos y Superficies */
+  --bg-primary: #F9FAFB;
+  --surface-1: #FFFFFF;
+  --surface-2: #F3F4F6;
+  --card: #FFFFFF;
+  --input-bg: #FFFFFF;
+  /* Tokens de Estado */
+  --success: #10B981;
+  --success-bg: #F0FDF4;
+  --success-border: #A7F3D0;
+  --danger: #EF4444;
+  --danger-bg: #FEF2F2;
+  --warning: #F59E0B;
+  
+  /* Bordes */
+  --border: #E5E7EB;
+  --input-border: #D1D5DB;
+
+  /* Texto */
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --placeholder-text: #9CA3AF;
+  
+  /* Colores de Acento */
+  --primary: #6366F1;
+  --primary-hover: #4F46E5;
+  --accent-gradient-start: #3B82F6;
+  --accent-gradient-end: #10B981;
+}
+
+/* Dark Theme */
+html.dark {
+  /* Fondos y Superficies */
+  --bg-primary: #0F1624;
+  --surface-1: #1B2433;
+  --surface-2: #2F3B52;
+  --card: #1B2433;
+  --input-bg: #1B2433;
+
+  /* Bordes */
+  --border: #2F3B52;
+  --input-border: #2F3B52;
+
+    /* Tokens de Estado */
+  --success: #34D399;
+  --success-bg: rgba(74, 222, 128, 0.1);
+  --success-border: rgba(74, 222, 128, 0.2);
+  --danger: #F87171;
+  --danger-bg: rgba(248, 113, 113, 0.1);
+  --warning: #FBBF24;
+
+  /* Texto */
+  --text-primary: #EAF2FF;
+  --text-secondary: #A7B3C6;
+  --placeholder-text: #64748B;
+  
+  /* Colores de Acento */
+  --primary: #818CF8;
+  --primary-hover: #6366F1;
+  --accent-gradient-start: #5B8DFF;
+  --accent-gradient-end: #00C8C8;
+}
+
+/* ==========================================================================
+   3. ESTILOS GLOBALES
+   ========================================================================== */
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   4. CLASES Y ANIMACIONES PERSONALIZADAS (TU CÓDIGO ORIGINAL + MODALES)
+   ========================================================================== */
+
+/* Animaciones de flotar mejoradas */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(1deg); }
+  66% { transform: translateY(-6px) rotate(-1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+.animate-float-slow {
+  animation: float-slow 12s ease-in-out infinite;
+}
+
+@keyframes grid-float {
+  0% { transform: translate(0px, 0px); }
+  25% { transform: translate(10px, -5px); }
+  50% { transform: translate(-5px, -10px); }
+  75% { transform: translate(-10px, 5px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+/* Animaciones premium para los componentes mejorados */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    opacity: 1;
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+    opacity: 0.8;
+  }
+}
+
+@keyframes particle-float {
+  0% { 
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+  33% { 
+    transform: translateY(-8px) translateX(4px) rotate(120deg);
+    opacity: 1;
+  }
+  66% { 
+    transform: translateY(-4px) translateX(-4px) rotate(240deg);
+    opacity: 0.8;
+  }
+  100% { 
+    transform: translateY(0px) translateX(0px) rotate(360deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes aurora {
+  0% { 
+    background-position: 0% 50%;
+    transform: scale(1);
+  }
+  25% { 
+    background-position: 100% 50%;
+    transform: scale(1.05);
+  }
+  50% { 
+    background-position: 100% 100%;
+    transform: scale(1);
+  }
+  75% { 
+    background-position: 0% 100%;
+    transform: scale(0.95);
+  }
+  100% { 
+    background-position: 0% 50%;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes breathe {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% { 
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Clases de utilidad para las animaciones */
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-particle-float {
+  animation: particle-float 8s ease-in-out infinite;
+}
+
+.animate-aurora {
+  animation: aurora 8s ease-in-out infinite;
+  background-size: 300% 300%;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/* Gradiente para texto */
+.text-gradient {
+  background-image: linear-gradient(to right, var(--accent-gradient-start), var(--accent-gradient-end));
+  -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
+  background-clip: text;         /* La propiedad estándar */
+  color: transparent;            /* Oculta el color del texto original */
+  -webkit-text-fill-color: transparent; /* Alternativa para WebKit */
+}
+
+/* Sombras personalizadas */
+.shadow-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 12px 36px rgba(0, 0, 0, 0.3);
+}
+.shadow-soft {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Anillo de foco (si lo necesitas) */
+.focus-ring {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Animación de gradiente (para el login) */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Forma hexagonal para los logros */
+.hexagon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  width: 112px;
+  height: 128px;
+}
+
+/* Animación de pulso para los logros */
+@keyframes pulse-slow {
+  50% {
+    opacity: .85;
+    box-shadow: 0 0 1.5rem 0.25rem rgba(234, 179, 8, 0.3);
+  }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Animaciones de entrada para los modales (las que faltaban) */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scale-in {
+  from { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out forwards;
+}
