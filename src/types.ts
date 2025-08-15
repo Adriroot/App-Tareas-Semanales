@@ -17,8 +17,19 @@ export interface UserProfile {
   uid: string;
   displayName: string;
   householdId: string;
+  householdName?: string; // Nombre del hogar actual
   color?: string;
   photoURL?: string | null;
+}
+
+export interface Household {
+  id: string;
+  name: string;
+  createdBy: string;
+  createdAt: string;
+  weekStartDate: string;
+  unlockedAchievements: string[];
+  memberCount?: number;
 }
 
 // Interfaz de un usuario asignado o que ha completado una tarea
@@ -73,6 +84,9 @@ export interface Achievement {
     name: string;
     description: string;
     icon: React.FC<{className?: string}>;
+    category?: string;
+    difficulty?: 'facil' | 'medio' | 'dificil' | 'extremo' | 'legendario';
+    points?: number;
     check: (
         stats: Record<string, UserStats>,
         history: HistoryEntry[],
